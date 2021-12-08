@@ -1,0 +1,217 @@
+h1,
+p {
+  font-family: Lato;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url('https://www.cambridge.org/elt/blog/wp-content/uploads/2019/02/background-3268840_1920.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  padding: 20px;
+  color: #fff;
+}
+
+.info-actual {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.fecha-container {
+  font-weight: 100;
+}
+
+.fecha-container .tiempo {
+  font-size: 86px;
+}
+
+.fecha-container #am-pm {
+  font-size: 22px;
+  margin-left: 20px;
+}
+
+.fecha-container .fecha {
+  font-size: 36px;
+}
+
+.fecha-container .otros .elem-tiempo #elem-tiempo-valor {
+  padding-left: 40px;
+}
+
+.lugar-container {
+  text-align: end;
+}
+
+.lugar-container .lugar-ubicacion {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.lugar-container .zona-horaria {
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.lugar-container .pais {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.info-actual .otros {
+  display: flex;
+  flex-direction: column;
+  /* background: rgba(24, 24, 27, 0.6); */
+  background: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px 0;
+  border: 1px solid #eee;
+}
+
+.info-actual .otros .elem-tiempo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.prevision-futura {
+  /* background: rgba(24, 24, 27, 0.8); */
+  background: rgba(206, 206, 205, 0.5);
+  padding: 25px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  color: white;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-left: -20px; /* mio */
+}
+
+/* .prevision-futura .hoy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 15px;
+  padding-right: 40px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.prevision-futura .hoy .dia {
+  padding: 5px 22px;
+  background: #3c3c44;
+  background: mistyrose;
+  color: navy;
+  font-weight: bold;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.prevision-futura .hoy .temp {
+  font-size: 18px;
+  padding-top: 15px;
+} */
+
+.prevision-futura .prevision-tiempo {
+  display: flex;
+}
+
+.prevision-tiempo .elem-prevision-tiempo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 10px;
+  /* background: rgba(0, 0, 0, 0.2); */
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.prevision-tiempo .elem-prevision-tiempo .dia {
+  padding: 5px 15px;
+  /* background: #3c3c44; */
+  background: mistyrose;
+  color: navy;
+  font-weight: bold;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.prevision-tiempo .elem-prevision-tiempo .temp {
+  font-weight: 100;
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 550px) {
+  .lugar-ubicacion,
+  .zona-horaria,
+  .pais {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .container {
+    padding: 20px;
+  }
+
+  /* .prevision-futura {
+    justify-content: start;
+    align-items: none;
+    overflow-x: scroll;
+  } */
+
+  /* .prevision-futura .hoy .temp {
+    font-size: 23px;
+  } // queda bien el que viene de base (16px) */
+
+  /* .fecha-container .tiempo {
+    font-size: 80px;
+  } */
+
+  /* .fecha-container .fecha {
+    font-size: 20px;
+  } */
+
+  .info-actual .otros {
+    padding: 12px;
+  }
+
+  .info-actual .otros .elem-tiempo {
+    font-size: 18px;
+  }
+}
+
+/* @media only screen and (max-width: 1000px) {
+  .prevision-futura {
+    justify-content: start;
+    align-items: none;
+    overflow-x: scroll;
+  }
+} */
+
+@media only screen and (max-width: 1280px) {
+  .prevision-futura {
+    justify-content: start;
+    align-items: none;
+    overflow-x: scroll;
+  }
+}
