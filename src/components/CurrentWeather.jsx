@@ -62,17 +62,17 @@ function CurrentWeather(props) {
         const lat = success.coords.latitude;
         const lon = success.coords.longitude;
         fetch(
-          `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&unit=metric&appid=${props.API_key}`
+          `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${props.API_key}`
         )
           .then((res) => res.json())
           .then((data) => {
             let locInfo = {
               loc: `${data.name}, ${data.sys.country}`,
               icon: data.weather[0].icon,
-              temp: calCelsius(data.main.temp),
-              feelsLike: calCelsius(data.main.feels_like),
-              minTemp: calCelsius(data.main.temp_min),
-              maxTemp: calCelsius(data.main.temp_max),
+              temp: Math.floor(data.main.temp),
+              feelsLike: Math.floor(data.main.feels_like),
+              minTemp: Math.floor(data.main.temp_min),
+              maxTemp: Math.floor(data.main.temp_max),
               humidity: data.main.humidity,
               pressure: data.main.pressure,
               main: data.weather[0].main,
@@ -91,10 +91,6 @@ function CurrentWeather(props) {
       }
     );
   }, []);
-
-  function calCelsius(temp) {
-    return Math.floor(temp - 274.15);
-  }
 
   return (
     <>

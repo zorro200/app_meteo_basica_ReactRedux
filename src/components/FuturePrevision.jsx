@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { handleFutPrev } from '../actions';
@@ -7,30 +7,26 @@ function FuturePrevision(props) {
   const [futPrev, setFutPrev] = useState();
 
   moment().locale('es');
-  // getFutPrev();
-  function getFutPrev() {
+
+  useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (success) => {
         const lat = success.coords.latitude;
         const lon = success.coords.longitude;
-        // console.log(lat);
-        setTimeout(() => {
-          fetch(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${props.API_key}`
-          )
-            .then((res) => res.json())
-            .then((data) => {
-              // console.log(data);
-              loadFutPrev(data);
-            });
-        }, 10000);
+        fetch(
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${props.API_key}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            loadFutPrev(data);
+          });
       },
       (err) => {
         alert('Ubicación no activada');
         console.log('Ubicación no activada ' + err);
       }
     );
-  }
+  }, []);
 
   function loadFutPrev(data) {
     setFutPrev(
@@ -38,20 +34,24 @@ function FuturePrevision(props) {
         i != 0 ? (
           <div key={i} className="elem-prevision-tiempo">
             <div className="dia">{moment(day.dt * 1000).format('ddd')}</div>
-            <div className="temp">Min - {calCelsius(day.temp.min)} ºC</div>
-            <div className="temp">Max - {calCelsius(day.temp.max)} ºC</div>
+            <div className="temp">
+              Min:
+              {Math.floor(day.temp.min)}
+              ºC
+            </div>
+            <div className="temp">
+              Max:
+              {Math.floor(day.temp.max)}
+              ºC
+            </div>
           </div>
         ) : (
-          console.log('Hoy ' + day)
+          console.log('Hoy -> ' + moment(day.dt * 1000).format('dddd'))
         )
       )
     );
-    console.log(futPrev)
+    console.log(futPrev);
     // props.handleFutPrev(data)
-  }
-
-  function calCelsius(temp) {
-    return Math.floor(temp - 274.15);
   }
 
   return (
@@ -68,7 +68,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  handleFutPrev
+  handleFutPrev,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FuturePrevision);

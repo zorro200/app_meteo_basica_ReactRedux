@@ -6,7 +6,7 @@ import ActualInfo from './components/ActualInfo.jsx';
 import FuturePrevision from './components/FuturePrevision.jsx';
 import './style.css';
 
-/** TODO: 
+/** TODO:
  * TERMINAR DE OPTIMIZAR CÓDIGO Y VER SI SE HACEN CAMBIOS EN ESTA DOC
  * ESTABLECER OBJETO PARA CADA DATOS DIARIOS(?)
 1. Pensar en objetos de información a guardar en el STATE y establecerlos en el "initialState".
