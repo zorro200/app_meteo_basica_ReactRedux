@@ -4,6 +4,7 @@ import moment from 'moment';
 import CurrentWeather from './CurrentWeather.jsx';
 
 function ActualInfo(props) {
+  console.log(props.currentW);
   moment().locale('es'); // NO FUNCIONA
   return (
     <div className="info-actual">
@@ -21,7 +22,7 @@ function ActualInfo(props) {
 
       <div className="lugar-container">
         <div className="lugar-ubicacion" id="lugar-ubicacion">
-          {props.locInfo.loc}
+          {props.currentW.loc}
         </div>
       </div>
     </div>
@@ -30,7 +31,7 @@ function ActualInfo(props) {
 
 function mapStateToProps(state) {
   return {
-    locInfo: state.locInfo,
+    currentW: state.currentW,
   };
 }
 

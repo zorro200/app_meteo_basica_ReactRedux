@@ -1,17 +1,3 @@
-function handleLocInfo(data) {
-  return {
-    type: 'CURRENT_W_INFO',
-    data: data,
-  };
-}
-
-function handleFutPrev(data) {
-  return {
-    type: 'FUTURE_PREVISION',
-    data: data,
-  };
-}
-
 function handleLocInfoAll(data) {
   return {
     type: 'CURRENT&FUT_W_INFO',
@@ -19,4 +5,20 @@ function handleLocInfoAll(data) {
   };
 }
 
-export { handleLocInfo, handleFutPrev, handleLocInfoAll };
+// function handleCurrentW(data) {
+//   return {
+//     type: 'CURRENT_W_INFO',
+//     data: data,
+//   };
+// }
+
+// function handleFutPrev(data) {
+//   // console.log(data)
+//   return {
+//     type: 'FUTURE_PREVISION',
+//     data: data,
+//   };
+// }
+
+export { handleLocInfoAll };
+// export { handleCurrentW, handleFutPrev };
