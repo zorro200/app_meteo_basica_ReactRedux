@@ -6,7 +6,6 @@ import { handleLocInfoAll } from '../actions';
 function CurrentWeather(props) {
   // WARNING --> If we use useState, we'll be able only to use its information in the return statement. I think that with re-renders the state goes again to its initial state and we can use it for, for example: sending it to dispatch actions and then to store and use it in other components.
 
-  // CONSEGUIR TODA LA INFO SIN REDUNDANCIA DE CÓDIGO (si uso otro archivo repito funciones)
   // Once the component is mounted, this will be executed
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
