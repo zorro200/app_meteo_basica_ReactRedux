@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { reducer } from './reducers/weather.js';
 import ActualInfo from './components/ActualInfo.jsx';
 import FuturePrevision from './components/FuturePrevision.jsx';
 import './style.css';
 
 /** TODO:
  * CAMBIAR "CurrentWeather" por "LocInfo"
- * RECOGER LOCALIDAD, YA QUE LA NUEVA LLAMADA A LA API NO LA CONTIENE
+ * RECOGER LOCALIDAD CON GOOGLE MAPS API, YA QUE LA NUEVA LLAMADA A LA API NO LA CONTIENE
  * MIRAR FALLO CON "moment.locale"
  * TERMINAR DE OPTIMIZAR CÓDIGO Y VER SI SE HACEN CAMBIOS EN ESTA DOC
  * ESTABLECER OBJETO PARA CADA DATOS DIARIOS(?)
@@ -53,35 +54,6 @@ import './style.css';
       - mapStateToProps --> acceder a "API_key" y "futPrev"
 5. 
  */
-
-const initialState = {
-  currentW: {},
-  futPrev: {},
-  API_key: 'e6715c036f2a31c0ae2045316f6690e8',
-};
-
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case 'CURRENT&FUT_W_INFO':
-      return {
-        ...state,
-        currentW: action.data.currentW,
-        futPrev: action.data.futPrev,
-      };
-    // case 'CURRENT_W_INFO':
-    //   return {
-    //     ...state.currentW,
-    //     currentW: action.data,
-    //   };
-    // case 'FUTURE_PREVISION':
-    //   return {
-    //     ...state.futPrev,
-    //     futPrev: action.data,
-    //   };
-    default:
-      return state;
-  }
-}
 
 const store = createStore(reducer);
 
