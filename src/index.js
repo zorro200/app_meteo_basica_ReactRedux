@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { reducer } from './reducers/weather.js';
+import { store } from './store';
 import ActualInfo from './components/ActualInfo.jsx';
 import FuturePrevision from './components/FuturePrevision.jsx';
 import './style.css';
@@ -54,8 +53,6 @@ import './style.css';
       - mapStateToProps --> acceder a "API_key" y "futPrev"
 5. 
  */
-
-const store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>

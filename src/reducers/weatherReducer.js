@@ -4,7 +4,7 @@ const initialState = {
   API_key: 'e6715c036f2a31c0ae2045316f6690e8',
 };
 
-export const reducer = (state = initialState, action) => {
+export const weatherReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CURRENT&FUT_W_INFO':
       return {
@@ -26,3 +26,29 @@ export const reducer = (state = initialState, action) => {
       return state;
   }
 };
+
+// ACTIONS
+function handleLocInfoAll(data) {
+  return {
+    type: 'CURRENT&FUT_W_INFO',
+    data: data,
+  };
+}
+
+// function handleCurrentW(data) {
+//   return {
+//     type: 'CURRENT_W_INFO',
+//     data: data,
+//   };
+// }
+
+// function handleFutPrev(data) {
+//   // console.log(data)
+//   return {
+//     type: 'FUTURE_PREVISION',
+//     data: data,
+//   };
+// }
+
+export { handleLocInfoAll };
+// export { handleCurrentW, handleFutPrev };

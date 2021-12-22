@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { handleLocInfoAll } from '../actions';
+import { handleLocInfoAll } from '../reducers/weatherReducer';
 
 function CurrentWeather(props) {
   // WARNING --> If we use useState, we'll be able only to use its information in the return statement. I think that with re-renders the state goes again to its initial state and we can use it for, for example: sending it to dispatch actions and then to store and use it in other components.
