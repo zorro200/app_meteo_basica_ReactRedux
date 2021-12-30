@@ -8,7 +8,7 @@ import FuturePrevision from './components/FuturePrevision.jsx';
 import './style.css';
 
 /** TODO:
- * CAMBIAR "CurrentWeather" por "LocInfo"
+ * CREAR MIDDLEWARE CON API QUE SE COMUNIQUE CON REDUCERS Y ASÍ TENER LA LÓGICA IMPERATIVA ALLÍ (llamadas fetch, declaraciones de objetos, etc.)
  * RECOGER LOCALIDAD CON GOOGLE MAPS API, YA QUE LA NUEVA LLAMADA A LA API NO LA CONTIENE
  * MIRAR FALLO CON "moment.locale"
  * TERMINAR DE OPTIMIZAR CÓDIGO Y VER SI SE HACEN CAMBIOS EN ESTA DOC
