@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import CurrentWeather from './CurrentWeather.jsx';
+import LocInfo from './LocInfo.jsx';
 
 function ActualInfo(props) {
   console.log(props.currentW);
@@ -17,7 +17,7 @@ function ActualInfo(props) {
           {moment().format('dddd, MMMM D')}
         </div>
 
-        <CurrentWeather />
+        <LocInfo />
       </div>
 
       <div className="lugar-container">

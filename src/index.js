@@ -28,13 +28,13 @@ import './style.css';
   - Devuelven un nuevo objeto state con la información correspondiente actualizada.
 
 4. Establecer los Componentes ya pensados y la estructura que devuelven, utilizando las actions y/o el store.
-  - ActualInfo --> Contiene "CurrentWeather" y muestra la hora, fecha y localidad actual.
-    - La localidad la recoge de datos del STATE, almacenados tras su cotejo en "CurrentWeather".
+  - ActualInfo --> Contiene "LocInfo" y muestra la hora, fecha y localidad actual.
+    - La localidad la recoge de datos del STATE, almacenados tras su cotejo en "LocInfo".
     - Usaremos:
       - mapStateToProps --> Acceder a "currentW".
       - connect --> Exportar y conectar el store con el componente.
   
-  - CurrentWeather --> Coteja la localización y recoge y devuelve los datos meteorológicos actuales, previsión futura diaria y alertas.
+  - LocInfo --> Coteja la localización y recoge y devuelve los datos meteorológicos actuales, previsión futura diaria y alertas.
     - Pedimos/Comprobamos permisos de geolocalización y hacemos una llamada a la API con la latitud y longitud.
     - Los datos devueltos los estableceremos como valor de un objeto y este lo pasaremos a la DISPATCH FUNCTION para enviar los datos al STORE.
     - Return: JSX con los datos a mostrar
