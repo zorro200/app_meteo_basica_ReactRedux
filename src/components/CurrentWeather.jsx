@@ -32,6 +32,9 @@ function CurrentWeather(props) {
     let daily = data.daily;
     let locInfo = {
       currentW: {
+        /**
+         * TODO: "loc" was obtained with "weather" API call, but now I'm using "onecall". I need to search another method for obtein it again
+         */
         // loc: `${current.name}, ${current.sys.country}`,
         icon: current.weather[0].icon,
         temp: Math.floor(current.temp),
@@ -51,42 +54,6 @@ function CurrentWeather(props) {
     };
     props.handleLocInfoAll(locInfo);
   }
-
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(
-  //     (success) => {
-  //       const lat = success.coords.latitude;
-  //       const lon = success.coords.longitude;
-  //       fetch(
-  //         `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${props.API_key}`
-  //       )
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           let currentW = {
-  //             loc: `${data.name}, ${data.sys.country}`,
-  //             icon: data.weather[0].icon,
-  //             temp: Math.floor(data.main.temp),
-  //             feelsLike: Math.floor(data.main.feels_like),
-  //             minTemp: Math.floor(data.main.temp_min),
-  //             maxTemp: Math.floor(data.main.temp_max),
-  //             humidity: data.main.humidity,
-  //             pressure: data.main.pressure,
-  //             main: data.weather[0].main,
-  //             description: data.weather[0].description,
-  //             windSpeed: data.wind.speed,
-  //             sunrise: data.sys.sunrise,
-  //             sunset: data.sys.sunset,
-  //             error: false,
-  //           };
-  //           props.handleCurrentW(currentW);
-  //         });
-  //     },
-  //     (err) => {
-  //       alert('Ubicación no activada');
-  //       console.log('Ubicación no activada ' + err);
-  //     }
-  //   );
-  // }, []);
 
   return (
     <>
@@ -134,7 +101,6 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  // handleCurrentW,
   handleLocInfoAll,
 };
 
