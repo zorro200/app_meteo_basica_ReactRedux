@@ -12,16 +12,6 @@ export const weatherReducer = (state = initialState, action) => {
         currentW: action.data.currentW,
         futPrev: action.data.futPrev,
       };
-    // case 'CURRENT_W_INFO':
-    //   return {
-    //     ...state.currentW,
-    //     currentW: action.data,
-    //   };
-    // case 'FUTURE_PREVISION':
-    //   return {
-    //     ...state.futPrev,
-    //     futPrev: action.data,
-    //   };
     default:
       return state;
   }
@@ -35,20 +25,4 @@ function handleLocInfoAll(data) {
   };
 }
 
-// function handleCurrentW(data) {
-//   return {
-//     type: 'CURRENT_W_INFO',
-//     data: data,
-//   };
-// }
-
-// function handleFutPrev(data) {
-//   // console.log(data)
-//   return {
-//     type: 'FUTURE_PREVISION',
-//     data: data,
-//   };
-// }
-
 export { handleLocInfoAll };
-// export { handleCurrentW, handleFutPrev };
