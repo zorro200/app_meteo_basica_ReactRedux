@@ -1,0 +1,69 @@
+App meteorológica básica
+
+Esta aplicación mostrará datos meteorológicos actuales y futuros a través de una API externa, además de la fecha y hora actuales.
+
+Este documento recogerá la explicación detallada de todas la tareas a desarrollar. Contendrá datos técnicos.
+
+TODO:
+ * CREAR MIDDLEWARE CON API QUE SE COMUNIQUE CON REDUCERS Y ASÍ TENER LA LÓGICA IMPERATIVA ALLÍ (llamadas fetch, declaraciones de objetos, etc.)
+ * RECOGER LOCALIDAD CON GOOGLE MAPS API, YA QUE LA NUEVA LLAMADA A LA API NO LA CONTIENE
+ * MIRAR FALLO CON "moment.locale"
+ * TERMINAR DE OPTIMIZAR CÓDIGO Y VER SI SE HACEN CAMBIOS EN ESTA DOC
+ * ESTABLECER OBJETO PARA CADA DATOS DIARIOS(?)
+
+PASOS (TODOS LOS PASOS INTERNOS DE CADA UNO NO TIENE POR QUÉ SEGUIR ORDEN RESPECTO A LOS GENERALES(1.1 puede ir tras 3.2, por ejemplo)):
+1. Pensar en objetos de información a guardar en el STATE y establecerlos en el "initialState".
+  - currentW --> información meteorológica actual.
+  - futPrev --> información meteorológica de los siguientes 7 días.
+  - API_key --> KEY de la API meteorológica.
+
+2. Establecer las DISPATCH FUNCTION (actions) en su respectivo archivo y exportarlas.
+  - handleLocInfoAll:
+    - Devuelve una función asíncrona que recoge la información meteorológica (MIDDLEWARE) actual y la previsión futura diaria
+    - La información recibida del servicio (MIDDLEWARE) la envía al STATE a través de DISPATCH
+  ANTERIORMENTE EMPLEADO:
+  - handleCurrentW --> devuelve la información meteorológica actual.
+  - handeFutPrev --> devuelve la previsión meteorológica de los días siguientes.
+
+3. Establecer el funcionamiento de las acciones en el método reducer.
+  - Devuelven un nuevo objeto state con la información actualizada.
+
+4. Establecer los Componentes ya pensados y la estructura que devuelven, utilizando las actions y/o el store.
+  - ActualInfo --> Contiene "LocInfo" y muestra la hora, fecha y localidad actual.
+    - La localidad la recoge de datos del STATE, almacenados tras su cotejo en "LocInfo".
+    - Usaremos:
+      - useSelector --> Acceder a 'currentW' del STATE
+      ANTERIORMENTE:
+      - mapStateToProps --> Acceder a "currentW".
+      - connect --> Exportar y conectar el store con el componente.
+
+  - LocInfo --> Coteja la localización y recoge y devuelve los datos meteorológicos actuales, 7 dias siguientes y alertas.
+    - Una vez se haya montado el componente:
+      - Cotejaremos los datos que necesitamos a través del servicio de MIDDLEWARE (coordenadas y meteorológicos)
+    - Fuera del montaje:
+      - Recogemos los datos del STATE para devolverlos a la vista.
+      - Return: JSX con los datos a mostrar
+    - Usaremos:
+      - useEffect en modalidad "ComponentDidMount"
+      - useDispatch --> usar DISPATCH FUNCTIONS importadas
+      - useSelector --> acceder a los datos del STATE
+      ANTERIORMENTE:
+      - mapStateToProps --> acceder a "API_key" y "currentW".
+      - mapDispatchToProps --> conectar DISPATCH FUNCTIONS (handleLocInfAll) al componente.
+  
+  REVISAR UNA VEZ SE HAYA TERMINADO ESTE COMPONENTE (GetFuturePrevision.jsx contiene un objeto interesante a crear con cada uno de los días. CONVIENE REVISAR ANTES DE ELIMINAR ESTA LÍNEA)
+  - FuturePrevision --> Muestra una mini-previsión de los siguientes 7 dias
+    - Si "futPrev" no está vacío, se ejecutará lo que procede
+    - Establecemos (para constante de "useState") una estructura JSX para cada día recibido excepto hoy.
+    - Return: JSX que contiene todos los días.
+    - Usaremos:
+      - useEffect en modalidad "ComponentDidUpdate" con "futPrev" como parámetro de cambio
+      - useSelector --> acceder a "futPrev"
+    
+    
+5. Establecer funcionamiento servicios:
+  - locinfo.js --> Se encargará de recoger la información de la localidad y meteorológica
+    - Pedimos/Comprobamos permisos de geolocalización y hacemos una llamada a la API con la latitud y longitud.
+    - Return: objeto (creado por nosotros) con los datos devueltos de la llamada a la API
+
+

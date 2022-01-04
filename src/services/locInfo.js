@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 const getLocInfoAll = async () => {
   navigator.geolocation.getCurrentPosition(
     (success) => {
@@ -10,7 +8,6 @@ const getLocInfoAll = async () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          
           loadWeatherAll(data);
         });
     },
@@ -20,3 +17,5 @@ const getLocInfoAll = async () => {
     }
   );
 };
+
+export { getLocInfoAll };
