@@ -1,10 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import moment from 'moment';
 import LocInfo from './LocInfo.jsx';
 
-function ActualInfo(props) {
-  console.log(props.currentW);
+function ActualInfo() {
+  const currentW = useSelector((state) => state.currentW);
+  console.log(currentW);
   moment().locale('es'); // NO FUNCIONA
   return (
     <div className="info-actual">
@@ -22,17 +23,11 @@ function ActualInfo(props) {
 
       <div className="lugar-container">
         <div className="lugar-ubicacion" id="lugar-ubicacion">
-          {props.currentW.loc}
+          {currentW.loc}
         </div>
       </div>
     </div>
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    currentW: state.currentW,
-  };
-}
-
-export default connect(mapStateToProps)(ActualInfo);
+export default ActualInfo;
