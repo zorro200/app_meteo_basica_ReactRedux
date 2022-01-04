@@ -19,7 +19,7 @@ import './style.css';
   - API_key --> KEY de la API meteorológica.
 
 2. Establecer las DISPATCH FUNCTION (actions) en su respectivo archivo y exportarlas.
-  - handleLocInfAll --> devuelve la información meteorológica actual y la previsión futura diaria
+  - handleLocInfAll --> devuelve una función asíncrona que recoge la información meteorológica (MIDDLEWARE) actual y la previsión futura diaria y la envía al STATE
   ANTERIORMENTE EMPLEADO:
   - handleCurrentW --> devuelve la información meteorológica actual.
   - handeFutPrev --> devuelve la previsión meteorológica de los días siguientes.
@@ -31,6 +31,8 @@ import './style.css';
   - ActualInfo --> Contiene "LocInfo" y muestra la hora, fecha y localidad actual.
     - La localidad la recoge de datos del STATE, almacenados tras su cotejo en "LocInfo".
     - Usaremos:
+      - useSelector --> Acceder a 'currentW' del STATE
+    ANTERIORMENTE:
       - mapStateToProps --> Acceder a "currentW".
       - connect --> Exportar y conectar el store con el componente.
   

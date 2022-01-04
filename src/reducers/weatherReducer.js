@@ -18,11 +18,20 @@ export const weatherReducer = (state = initialState, action) => {
 };
 
 // ACTIONS
-function handleLocInfoAll(data) {
-  return {
-    type: 'CURRENT&FUT_W_INFO',
-    data: data,
+function handleLocInfoAll() {
+  return async (dispatch) => {
+    const data = await getLocInfoAll();
+    dispatch({
+      type: 'CURRENT&FUT_W_INFO',
+      data: data,
+    });
   };
 }
+// function handleLocInfoAll(data) {
+//   return {
+//     type: 'CURRENT&FUT_W_INFO',
+//     data: data,
+//   };
+// }
 
 export { handleLocInfoAll };
