@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+
 const getLocInfoAll = async () => {
   navigator.geolocation.getCurrentPosition(
     (success) => {
@@ -8,7 +10,7 @@ const getLocInfoAll = async () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          loadWeatherAll(data);
+          return (info = loadWeatherAll(data));
         });
     },
     (err) => {

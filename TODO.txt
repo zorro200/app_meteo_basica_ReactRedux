@@ -44,9 +44,9 @@ PASOS (TODOS LOS PASOS INTERNOS DE CADA UNO NO TIENE POR QUÉ SEGUIR ORDEN RESPE
       - Recogemos los datos del STATE para devolverlos a la vista.
       - Return: JSX con los datos a mostrar
     - Usaremos:
-      - useEffect en modalidad "ComponentDidMount"
-      - useDispatch --> usar DISPATCH FUNCTIONS importadas
-      - useSelector --> acceder a los datos del STATE
+      - useEffect en modalidad "ComponentDidUpdate"
+      - useDispatch --> usar DISPATCH FUNCTIONS importadas (handleLocInfAll)
+      - useSelector --> acceder a "currentW"
       ANTERIORMENTE:
       - mapStateToProps --> acceder a "API_key" y "currentW".
       - mapDispatchToProps --> conectar DISPATCH FUNCTIONS (handleLocInfAll) al componente.
