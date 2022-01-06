@@ -16,14 +16,16 @@ const getLocInfoAll = async (API_key) => {
   const postition = await getCoordinates();
   const lat = postition.coords.latitude;
   const lon = postition.coords.longitude;
-  await fetch(
+  const info = await fetch(
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${API_key}`
   )
     .then((res) => res.json())
     .then((data) => {
-      const info = loadWeatherAll(data);
-      return info;
+      // Fetch's return
+      return loadWeatherAll(data);
     });
+  // Function's return
+  return info;
 };
 
 function loadWeatherAll(data) {
