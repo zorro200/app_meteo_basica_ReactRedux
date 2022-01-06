@@ -1,3 +1,5 @@
+import { getLocInfoAll } from '../services/locInfo';
+
 const initialState = {
   currentW: {},
   futPrev: {},
@@ -6,7 +8,7 @@ const initialState = {
 
 export const weatherReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'CURRENT&FUT_W_INFO':
+    case '@weather/current&fut':
       return {
         ...state,
         currentW: action.data.currentW,
@@ -18,15 +20,16 @@ export const weatherReducer = (state = initialState, action) => {
 };
 
 // ACTIONS
-function handleLocInfoAll() {
+const handleLocInfoAll = (API_key) => {
   return async (dispatch) => {
-    const data = await getLocInfoAll();
+    const data = await getLocInfoAll(API_key);
+    console.log(data);
     dispatch({
-      type: 'CURRENT&FUT_W_INFO',
+      type: '@weather/current&fut',
       data: data,
     });
   };
-}
+};
 // function handleLocInfoAll(data) {
 //   return {
 //     type: 'CURRENT&FUT_W_INFO',

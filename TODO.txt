@@ -40,12 +40,12 @@ PASOS (TODOS LOS PASOS INTERNOS DE CADA UNO NO TIENE POR QUÉ SEGUIR ORDEN RESPE
     - Una vez se haya montado el componente:
       - Cotejaremos los datos que necesitamos a través del servicio de MIDDLEWARE (coordenadas y meteorológicos)
     - Fuera del montaje:
-      - Recogemos los datos del STATE para devolverlos a la vista.
+      - Recogemos currentW.
       - Return: JSX con los datos a mostrar
     - Usaremos:
+      - useSelector --> acceder a "currentW"
       - useEffect en modalidad "ComponentDidUpdate"
       - useDispatch --> usar DISPATCH FUNCTIONS importadas (handleLocInfAll)
-      - useSelector --> acceder a "currentW"
       ANTERIORMENTE:
       - mapStateToProps --> acceder a "API_key" y "currentW".
       - mapDispatchToProps --> conectar DISPATCH FUNCTIONS (handleLocInfAll) al componente.
@@ -64,5 +64,6 @@ PASOS (TODOS LOS PASOS INTERNOS DE CADA UNO NO TIENE POR QUÉ SEGUIR ORDEN RESPE
   - locinfo.js --> Se encargará de recoger la información de la localidad y meteorológica
     - Pedimos/Comprobamos permisos de geolocalización y hacemos una llamada a la API con la latitud y longitud.
     - Return: objeto (creado por nosotros) con los datos devueltos de la llamada a la API
-
+    - Usaremos:
+      - useSelector --> acceder a API_key
 
