@@ -81,13 +81,13 @@ function LocInfo(props) {
           <tr className="elem-tiempo">
             <th>Amanacer</th>
             <td id="elem-tiempo-valor">
-              {moment(currentW.sunrise * 1000).format('HH:mm a')}
+              {moment(currentW.sunrise * 1000).format('LT')}
             </td>
           </tr>
           <tr className="elem-tiempo">
             <th>Anochecer</th>
             <td id="elem-tiempo-valor">
-              {moment(currentW.sunset * 1000).format('HH:mm a')}
+              {moment(currentW.sunset * 1000).format('LT')}
             </td>
           </tr>
         </tbody>

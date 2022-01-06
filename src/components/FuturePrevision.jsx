@@ -8,7 +8,6 @@ import moment from 'moment';
 function FuturePrevision() {
   const [lsFutPrev, setFutPrev] = useState();
   const futPrev = useSelector((state) => state.futPrev);
-  moment().locale('es');
 
   useEffect(() => {
     console.log(futPrev);
