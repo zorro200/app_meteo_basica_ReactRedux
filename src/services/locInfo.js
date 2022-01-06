@@ -1,3 +1,7 @@
+/**
+ * Get user coordenates from the browser
+ * @returns a Promise with the coordenates
+ */
 function getCoordinates() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
@@ -12,6 +16,15 @@ function getCoordinates() {
     );
   });
 }
+
+/**
+ * Will return the weather information to the frontend
+ * @param {string} API_key
+ * @constant {json} info weather object
+ * @return {json} @constant info
+ * WARNING: If you try to do the fetch call inside the Promise, you won't be able to
+ * do an await instance; because it detects that the fetch call is not in an async function.
+ */
 const getLocInfoAll = async (API_key) => {
   const postition = await getCoordinates();
   const lat = postition.coords.latitude;
@@ -28,10 +41,16 @@ const getLocInfoAll = async (API_key) => {
   return info;
 };
 
+/**
+ * Will create an object with the data that we need from the fetch call and return it
+ * @constant current current weather data
+ * @constant daily daily weather prevision data
+ * @constant locInfo object with the weather data needed
+ */
 function loadWeatherAll(data) {
-  let current = data.current;
-  let daily = data.daily;
-  let locInfo = {
+  const current = data.current;
+  const daily = data.daily;
+  const locInfo = {
     currentW: {
       /**
        * TODO: "loc" was obtained with "weather" API call, but now I'm using "onecall". I need to search another method for obtein it again
