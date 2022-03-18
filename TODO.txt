@@ -5,8 +5,7 @@ Esta aplicación mostrará datos meteorológicos actuales y futuros a través de
 Este documento recogerá la explicación detallada de todas la tareas a desarrollar. Contendrá datos técnicos.
 
 TODO:
- * RECOGER LOCALIDAD CON GOOGLE MAPS API, YA QUE LA NUEVA LLAMADA A LA API NO LA CONTIENE
- * SUSTITUIR FETCH POR AXIOS (PROBAR)
+ * ANOTAR RECOGER LOC CON API ==> AMBAS LLAMADAS HECHAS CON FUNCIÓN ALL DE AXIOS
  * PONER API_key COMO VARIABLE GLOBAL Y NO GUARDARLA EN LA STORE
  * TERMINAR DE OPTIMIZAR CÓDIGO Y VER SI SE HACEN CAMBIOS EN ESTA DOC
  * ESTABLECER OBJETO PARA CADA DATOS DIARIOS(?)

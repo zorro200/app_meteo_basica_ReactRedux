@@ -21,24 +21,37 @@ function getCoordinates() {
 /**
  * Will return the weather information to the frontend
  * @param {string} API_key
- * @constant {json} info weather object
+ * @constant meteo future and actual weather info
+ * @constant loc location
  * @return {json} @constant info
  * WARNING: If you try to do the fetch call inside the Promise, you won't be able to
  * do an await instance; because it detects that the fetch call is not in an async function.
  */
 const getLocInfoAll = async (API_key) => {
   const postition = await getCoordinates();
-  const lat = postition.coords.latitude;
-  const lon = postition.coords.longitude;
+  let { latitude, longitude } = postition.coords;
+
+  const meteo = axios.get(
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_key}`
+  );
+  const loc = axios.get(
+    `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_key}`
+  );
+
   const info = await axios
-    .get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${API_key}`
+    .all([meteo, loc])
+    .then(
+      axios.spread((...res) => {
+        const meteo = res[0].data;
+        const loc = res[1].data[0];
+        // Axios' return
+        return loadWeatherAll(meteo, loc);
+      })
     )
-    .then((res) => {
-      console.log(res.data);
-      // Axios' return
-      return loadWeatherAll(res.data);
+    .catch((err) => {
+      console.log(err);
     });
+
   // Function's return
   return info;
 };
@@ -49,15 +62,15 @@ const getLocInfoAll = async (API_key) => {
  * @constant daily daily weather prevision data
  * @constant locInfo object with the weather data needed
  */
-function loadWeatherAll(data) {
-  const current = data.current;
-  const daily = data.daily;
+function loadWeatherAll(meteo, loc) {
+  const current = meteo.current;
+  const daily = meteo.daily;
   const locInfo = {
     currentW: {
       /**
        * TODO: "loc" was obtained with "weather" API call, but now I'm using "onecall". I need to search another method for obtein it again
        */
-      // loc: `${current.name}, ${current.sys.country}`,
+      loc: `${loc.name}, ${loc.country}`,
       icon: current.weather[0].icon,
       temp: Math.floor(current.temp),
       feelsLike: Math.floor(current.feels_like),
