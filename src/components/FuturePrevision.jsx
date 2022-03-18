@@ -15,6 +15,7 @@ function FuturePrevision() {
       setFutPrev(
         futPrev.daily.map((day, i) =>
           i != 0 ? (
+            // Daily prev HTML
             <div key={i} className="elem-prevision-tiempo">
               <div className="dia">{moment(day.dt * 1000).format('ddd')}</div>
               <div className="temp">
