@@ -14,6 +14,7 @@ export const weatherReducer = (state = initialState, action) => {
         currentW: action.data.currentW,
         futPrev: action.data.futPrev,
       };
+
     default:
       return state;
   }
@@ -23,6 +24,7 @@ export const weatherReducer = (state = initialState, action) => {
 const handleLocInfoAll = (API_key) => {
   return async (dispatch) => {
     const data = await getLocInfoAll(API_key);
+
     dispatch({
       type: '@weather/current&fut',
       data: data,

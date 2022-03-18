@@ -1,3 +1,4 @@
+import axios from 'axios';
 /**
  * Get user coordenates from the browser
  * @returns a Promise with the coordenates
@@ -29,13 +30,14 @@ const getLocInfoAll = async (API_key) => {
   const postition = await getCoordinates();
   const lat = postition.coords.latitude;
   const lon = postition.coords.longitude;
-  const info = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${API_key}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      // Fetch's return
-      return loadWeatherAll(data);
+  const info = await axios
+    .get(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${API_key}`
+    )
+    .then((res) => {
+      console.log(res.data);
+      // Axios' return
+      return loadWeatherAll(res.data);
     });
   // Function's return
   return info;
